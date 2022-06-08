@@ -17,31 +17,53 @@ function playRound(playerSelection,computerSelection){
     playerSelection=playerSelection.toUpperCase();
     computerSelection=computerSelection.toUpperCase();
     if(playerSelection==computerSelection){
-        return 'That\'s a tie! Play again.'; 
+        console.log('That\'s a tie! Play again.');
+        return 'LOSE'; 
     }else
     if(playerSelection=='ROCK'){
         if(computerSelection=='PAPER'){
-            return 'You lose! Paper beats rock.';
+            console.log('You lose! Paper beats rock.');
+            return 'LOSE'
         }else
         if(computerSelection=='SCISSORS'){
-            return 'You win! Rock beats scissors.';
+            console.log('You win! Rock beats scissors.');
+            return 'WIN';
         }
     }else
     if(playerSelection=='PAPER'){
         if(computerSelection=='ROCK'){
-            return 'You win! Paper beats rock.';
+            console.log('You win! Paper beats rock.');
+            return 'WIN';
         }else
         if(computerSelection=='SCISSORS'){
-            return 'You lose! Scissors beats paper.';
+            console.log('You lose! Scissors beats paper.');
+            return 'LOSE'
         }
     }else
     if(playerSelection=='SCISSORS'){
         if(computerSelection=='ROCK'){
-            return 'You lose! Rock beats scissors.';
+            console.log('You lose! Rock beats scissors.');
+            return 'LOSE'
         }
         if(computerSelection=='PAPER'){
-            return 'You win! Scissors beats paper';
+            console.log('You win! Scissors beats paper');
+            return 'WIN';
         }
     }
 }
-console.log(playRound('rock',computerPlay()));
+function game(){
+    var wins = 0;
+    var losses = 0;
+    for(let i=1;i<6;i++){
+        var input=prompt("Rock, paper, or scissors?");
+        var output = playRound(input,computerPlay());
+        if(output == 'WIN'){
+            wins++;
+        }else{
+            losses++;
+        }
+        console.log("Round "+i+" score: \nWins: "+wins+"\nLosses: "+losses);
+    }
+}
+//console.log(playRound('rock',computerPlay()));
+console.log(game());
